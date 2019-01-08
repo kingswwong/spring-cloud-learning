@@ -1,0 +1,13 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: spring-cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/kingswwong/spring-cloud-learning/
+          search-paths: config
+          username: kingswwong
+          password: 19961223cxy
