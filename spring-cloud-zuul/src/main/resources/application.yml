@@ -1,35 +1,41 @@
-server:
-  port: 7073
-security:
-  user:
-    password: user  # 直接登录时的密码
-  ignored: /
-  sessions: never   # session策略
-  oauth2:
-    sso:
-      loginPath: /login   # 登录路径
-    client:
-      clientId: fdeca6ed4aee162d6391
-      clientSecret: 78223590b23c15c1860d78bd778e4f19c9439271
-      accessTokenUri: https://github.com/login/oauth/access_token
-      userAuthorizationUri: https://github.com/login/oauth/authorize
-    resource:
-      userInfoUri: https://api.github.com/user
-      preferTokenInfo: false
 
+server:
+  port: 8081
+  contextPath: /
 
 spring:
   application:
-    name: gateway-service-zuul
+    name: spring-cloud-zuul
 
 eureka:
   client:
-    service-url:
+    serviceUrl:
       defaultZone: http://localhost:8000/eureka/
 
+security:
+  oauth2:
+    client:
+      accessTokenUri: http://localhost:7070/authserver/oauth/token
+      userAuthorizationUri: http://localhost:7070/authserver/oauth/authorize
+      clientId: second
+      clientSecret: passwordforauthserver
+    resource:
+      userInfoUri: http://localhost:9000/user
+
+person:
+  url: http://localhost:9000/person
+
+
 zuul:
-  ignored-services: '*'
   routes:
-    api-a:
-      path: /userprofile/**
-      service-id: spring-cloud-user-client
+    resource:
+      path: /api/**
+      url: http://localhost:9000
+    user: 
+      path: /user/**
+      url: http://localhost:9000/user
+
+proxy:
+  auth:
+    routes:
+      api: oauth2

@@ -1,0 +1,27 @@
+server:
+  port: 7070
+  contextPath: /authserver
+
+spring:
+  application:
+    name: spring-cloud-auth-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+
+jwt:
+  certificate:
+    store:
+      file: classpath:/certificate/mykeystore.jks
+      password: abirkhan04
+    key:
+      alias: myauthkey
+      password: abirkhan04
+
+      
+security:
+  oauth2:
+    resource: 
+      filter-order: 3
+      
