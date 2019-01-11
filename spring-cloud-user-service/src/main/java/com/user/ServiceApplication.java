@@ -1,17 +1,15 @@
-package com.security;
+package com.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
-public class OauthApplication {
+public class ServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OauthApplication.class, args);
+		SpringApplication.run(ServiceApplication.class, args);
 	}
 
 }
