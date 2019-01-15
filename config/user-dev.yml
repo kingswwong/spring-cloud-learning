@@ -8,6 +8,4 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true    
-
-test:
-	url: 123123    
+ 
