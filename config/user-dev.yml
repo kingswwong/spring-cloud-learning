@@ -1,7 +1,4 @@
 spring:
-  profiles:
-    active: native
-  config:
-    server:
-      native:
-        search-locations: "classpath:application.yml"
+  cloud:
+    config:
+      overrideNone: true
